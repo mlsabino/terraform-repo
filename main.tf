@@ -8,5 +8,11 @@ terraform {
 }
 
 provider "google" {
-    
+    project = "curso-terraform-26091994"
+    region = "southamerica-east1"
+    zone = "southamerica-east1-a"
+}
+
+resource google_storage_bucket "bucket1"{
+    name = "terraform-bucket-mlsabino"
 }
