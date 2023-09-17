@@ -11,8 +11,9 @@ provider "google" {
     project = "curso-terraform-26091994"
     region = "southamerica-east1"
     zone = "southamerica-east1-a"
+    credentials = "service-account-key.json"
 }
 
 resource google_storage_bucket "bucket1"{
-    name = "terraform-bucket-mlsabino"
+    name = "terraform-bucket-serviceacc-mlsabino"
 }
