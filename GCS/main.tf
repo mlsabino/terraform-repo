@@ -1,19 +1,19 @@
-terraform {
-  required_providers {
-    google = {
-        source = "hashicorp/google"
-        version = "3.85.0"
-    }
+resource "google_storage_bucket" "bucket" {
+  name = "bucket-via-terraform"
+  storage_class = "STANDARD"
+  location = "SOUTHAMERICA-EAST1"
+  uniform_bucket_level_access = true
+
+  
+  labels = {
+    "env" = "qa"
+    "dep" = "it"
   }
 }
 
-provider "google" {
-    project = "curso-terraform-26091994"
-    region = "southamerica-east1"
-    zone = "southamerica-east1-a"
-    credentials = "service-account-key.json"
-}
-
-resource google_storage_bucket "bucket1"{
-    name = "terraform-bucket-serviceacc-mlsabino"
+resource "google_storage_bucket_object" "fotos" {
+  name = "cats"
+  bucket = google_storage_bucket.bucket.name
+  source = "/Users/matheus.sabino/Desktop/cats.png"
+  
 }
